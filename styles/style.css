@@ -1,0 +1,23 @@
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.problem {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 250px;
+
+    border: 1px solid black;
+}
+
+.problem input[type=color] {
+    width: 50px;
+}
+
+.problem input[type=number] {
+    width: 50px;
+}
