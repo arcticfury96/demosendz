@@ -10,14 +10,16 @@
     align-items: center;
 
     height: 250px;
-
-    border: 1px solid black;
 }
 
-.problem input[type=color] {
-    width: 50px;
+.problem > * {
+    background-color: white;
+    box-shadow: white 0 0 5px 5px;
+    border-radius: 10px;
+    padding: 0 5px;
 }
 
+.problem input[type=color],
 .problem input[type=number] {
     width: 50px;
 }

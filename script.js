@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadValuesFromLocalStorage(problem) {
-    problem.querySelectorAll('input:not([type=radio])').forEach((input) => {
+    problem.querySelectorAll('input[type=number]').forEach((input) => {
         let loadedValue = localStorage.getItem(input.name);
         if (loadedValue !== null) {
-            input.value = localStorage.getItem(input.name);
+            input.value = loadedValue;
         }
     });
 
@@ -18,6 +18,14 @@ function loadValuesFromLocalStorage(problem) {
         let loadedValue = localStorage.getItem(input.name);
         if (loadedValue !== null) {
             input.checked = input.value === loadedValue;
+        }
+    });
+
+    problem.querySelectorAll('input[type=color]').forEach((input) => {
+        let loadedValue = localStorage.getItem(input.name);
+        if (loadedValue !== null) {
+            input.value = loadedValue;
+            input.closest('.problem').style.backgroundColor = loadedValue;
         }
     });
 }
@@ -29,13 +37,12 @@ function applyChangeEvents(problem) {
 
     problem.querySelectorAll('input[type=radio]').forEach((radio) => {
         radio.addEventListener('change', (event) => {
-            console.log('should save radio: ', event.target.name, event.target.value);
-            console.log('selected radio: ', document.querySelector('input[name="' + event.target.name + '"]:checked').value);
             localStorage.setItem(event.target.name, event.target.value);
         });
     })
 
     problem.querySelector('input[type=color]').addEventListener('change', (event) => {
         localStorage.setItem(event.target.name, event.target.value);
+        event.target.closest('.problem').style.backgroundColor = event.target.value;
     });
 }
